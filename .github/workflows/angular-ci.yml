@@ -39,6 +39,14 @@ jobs:
 
       - name: Build the application  
         run: ng build 
+      - name: Run Tests
+        run: |
+          if npm ls --depth=0 jest; then
+            echo "Running Jest tests"
+            npm run test -- --watch=false
+          else
+            echo "Running Karma tests"
+            npm run test
 
       - name: Run Jest tests  
         id: jest_test  
