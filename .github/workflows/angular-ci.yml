@@ -21,7 +21,7 @@ jobs:
       - name: Set up Node.js  
         uses: actions/setup-node@v2  
         with:  
-          node-version: '16' # Specify the Node.js version to match your project  
+          node-version: '22.14.0' # Specify the Node.js version to match your project  
 
       - name: Cache Node modules  
         uses: actions/cache@v2  
