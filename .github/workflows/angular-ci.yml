@@ -41,7 +41,7 @@ jobs:
         run: ng build 
 
       - name: Run tests  
-        run: ng test --watch=false --bail  
+        run: ng test --watch=false  
 
       - name: Check for vulnerabilities  
         run: npm audit
