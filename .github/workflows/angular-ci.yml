@@ -46,7 +46,7 @@ jobs:
             npm run test -- --watch=false
           else
             echo "Running Karma tests"
-            npm run test
+            npm run test -- --browsers=ChromeHeadless --watch=false
           fi
 
       - name: Run Jest tests  
