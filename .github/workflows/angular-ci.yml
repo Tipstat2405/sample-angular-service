@@ -47,6 +47,7 @@ jobs:
           else
             echo "Running Karma tests"
             npm run test
+          fi
 
       - name: Run Jest tests  
         id: jest_test  
