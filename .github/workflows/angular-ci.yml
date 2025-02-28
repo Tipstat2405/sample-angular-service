@@ -1,4 +1,4 @@
-name: CI  
+name: 
 
 on:  
   push:  
@@ -73,5 +73,23 @@ jobs:
           fi  
         continue-on-error: true  
 
-      - name: Check for vulnerabilities  
-        run: npm audit
+      - name: Set up SonarQube Scanner
+        uses: sonarsource/sonarcloud-github-action@v2
+        with:
+          sonar-token: ${{ secrets.SONAR_TOKEN }}  # Store your SonarQube token in GitHub Secrets
+          sonar-project-key: "sample-angular-service"    # Set your SonarQube project key
+          sonar-project-name: "sample-angular-service"  # Set your SonarQube project name
+
+      # Run SonarQube Scan
+      - name: Run SonarQube analysis
+        run: |
+          # Install SonarQube scanner
+          npm install -g sonar-scanner
+
+          # Run SonarQube analysis
+          sonar-scanner \
+            -Dsonar.projectKey=sample-angular-service \
+            -Dsonar.projectName=sample-angular-service \
+            -Dsonar.sources=src \
+            -Dsonar.host.url=http://localhost:9000 # URL of your SonarQube server (for SonarCloud, use its URL)
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
