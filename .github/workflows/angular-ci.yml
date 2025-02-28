@@ -91,5 +91,5 @@ jobs:
             -Dsonar.projectKey="sample-angular-service" \
             -Dsonar.projectName="sample-angular-service" \
             -Dsonar.sources=src \
-            -Dsonar.host.url=http://localhost:9000 # URL of your SonarQube server (for SonarCloud, use its URL)
+            -Dsonar.host.url=http://localhost:9000 \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
