@@ -16,21 +16,21 @@ export class PostListComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.fetchPosts();
+    //this.fetchPosts();
   }
 
-  fetchPosts() {
-    this.loading = true;
-    this.http.get('https://jsonplaceholder.typicode.com/posts')
-      .subscribe(
-        (data: any) => {
-          this.posts = data;
-          this.loading = false;
-        },
-        error => {
-          console.error('Error fetching posts', error);
-          this.loading = false;
-        }
-      );
-  }
+  // fetchPosts() {
+  //   this.loading = true;
+  //   this.http.get('https://jsonplaceholder.typicode.com/posts')
+  //     .subscribe(
+  //       (data: any) => {
+  //         this.posts = data;
+  //         this.loading = false;
+  //       },
+  //       error => {
+  //         console.error('Error fetching posts', error);
+  //         this.loading = false;
+  //       }
+  //     );
+  // }
 }

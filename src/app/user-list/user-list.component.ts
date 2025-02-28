@@ -16,21 +16,21 @@ export class UserListComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.fetchUsers();
+    //this.fetchUsers();
   }
 
-  fetchUsers() {
-    this.loading = true;
-    this.http.get('https://jsonplaceholder.typicode.com/users')
-      .subscribe(
-        (data: any) => {
-          this.users = data;
-          this.loading = false;
-        },
-        error => {
-          console.error('Error fetching users', error);
-          this.loading = false;
-        }
-      );
-  }
+  // fetchUsers() {
+  //   this.loading = true;
+  //   this.http.get('https://jsonplaceholder.typicode.com/users')
+  //     .subscribe(
+  //       (data: any) => {
+  //         this.users = data;
+  //         this.loading = false;
+  //       },
+  //       error => {
+  //         console.error('Error fetching users', error);
+  //         this.loading = false;
+  //       }
+  //     );
+  // }
 }
