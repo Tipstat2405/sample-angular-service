@@ -17,15 +17,7 @@ jobs:
     steps:  
       - name: Check out the repository  
         uses: actions/checkout@v2  
-
-      - name: Wait for the service to be ready
-        run: |
-          while ! nc -z localhost 9000; do
-            sleep 1
-          done
-
-      - name: Run tests
-        run: curl http://localhost:9000  
+ 
       - name: Set up Node.js  
         uses: actions/setup-node@v2  
         with:  
@@ -96,7 +88,7 @@ jobs:
 
           # Run SonarQube analysis
           sonar-scanner \
-            -Dsonar.projectKey="sample-angular-service" \
+            -Dsonar.projectKey="tipstat2405_sample-angular-service" \
             -Dsonar.projectName="sample-angular-service" \
             -Dsonar.sources=src \
             -Dsonar.host.url=https://sonarcloud.io \
