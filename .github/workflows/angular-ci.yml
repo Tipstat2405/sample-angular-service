@@ -49,29 +49,7 @@ jobs:
             ng test --browsers=ChromeHeadless --code-coverage --watch=false
           fi
 
-      - name: Run Jest tests  
-        id: jest_test  
-        run: |  
-          if [ -f "jest.config.js" ]; then  
-            echo "Running Jest tests..."  
-            npm run test -- --ci  
-          else  
-            echo "No Jest configuration found, skipping Jest tests."  
-            echo "::set-output name=jest_found::false"  
-          fi  
-        continue-on-error: true  
-
-      - name: Run Karma tests  
-        id: karma_test  
-        run: |  
-          if [ -f "karma.conf.js" ]; then  
-            echo "Running Karma tests..."  
-            npm test --browsers=ChromeHeadless --code-coverage --watch=false
-          else  
-            echo "No Karma configuration found, skipping Karma tests."  
-            echo "::set-output name=karma_found::false"  
-          fi  
-        continue-on-error: true  
+   
 
       # - name: Set up SonarQube Scanner
       #   uses: sonarsource/sonarcloud-github-action@v2
