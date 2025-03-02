@@ -66,7 +66,7 @@ jobs:
         run: |  
           if [ -f "karma.conf.js" ]; then  
             echo "Running Karma tests..."  
-            npm test -- --browsers=ChromeHeadless --code-coverage --watch=false
+            npm test --browsers=ChromeHeadless --code-coverage --watch=false
           else  
             echo "No Karma configuration found, skipping Karma tests."  
             echo "::set-output name=karma_found::false"  
