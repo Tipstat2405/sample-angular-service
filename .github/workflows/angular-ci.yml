@@ -46,7 +46,7 @@ jobs:
             npm run test -- --watch=false
           else
             echo "Running Karma tests"
-            npm run test -- --browsers=ChromeHeadless --code-coverage --watch=false
+            ng test -- --browsers=ChromeHeadless --code-coverage --watch=false
           fi
 
       - name: Run Jest tests  
@@ -66,7 +66,7 @@ jobs:
         run: |  
           if [ -f "karma.conf.js" ]; then  
             echo "Running Karma tests..."  
-            npm run test -- --watch=false  
+            npm test -- --browsers=ChromeHeadless --code-coverage --watch=false
           else  
             echo "No Karma configuration found, skipping Karma tests."  
             echo "::set-output name=karma_found::false"  
@@ -94,4 +94,4 @@ jobs:
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.organization="tipstat2405" \
-            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
+            -D
