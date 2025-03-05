@@ -1,5 +1,5 @@
 # Step 1: Use Node.js as the base image
-FROM node:16 AS build
+FROM node:20.18.0 AS build
 
 # Set the working directory in the container
 WORKDIR /app
@@ -15,7 +15,7 @@ COPY . .
 RUN npm run build --prod
 
 # Step 2: Use a lightweight HTTP server to serve the built app
-FROM node:16
+FROM node:20.18.0
 
 # Install http-server (you can also install other static servers if preferred)
 RUN npm install -g http-server
