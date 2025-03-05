@@ -21,7 +21,7 @@ FROM node:20.18.0
 RUN npm install -g http-server
 
 # Copy the built app from the build container to the server's serving location
-COPY --from=build /app/dist/your-angular-app /usr/share/nginx/html
+COPY --from=build /app/dist/sample-angular-service /usr/share/nginx/html
 
 # Expose the necessary port
 EXPOSE 8080
