@@ -103,4 +103,5 @@ jobs:
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
         run: |
           echo "$COSIGN_PRIVATE_KEY" > cosign.key  # Save the key to a file
+          cat cosign.key  # Debugging: Display the key (ensure it's correct, but remove later)
           cosign sign --key cosign.key rayudu0235/sample-angular-service:latest
