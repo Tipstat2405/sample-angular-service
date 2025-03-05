@@ -46,7 +46,7 @@ jobs:
             npm run test -- --watch=false
           else
             echo "Running Karma tests"
-            ng test -- --browsers=ChromeHeadless --code-coverage --watch=false
+            ng test --browsers=ChromeHeadless --code-coverage --watch=false
           fi
 
       - name: Run Jest tests  
@@ -94,4 +94,29 @@ jobs:
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.organization="tipstat2405" \
-            -D
+     # Step 4: Log in to Docker Hub (or GitHub Container Registry)
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+  # Step 5: Build and Push Docker Image
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t rayudu0235/sample-angular-service:latest .
+          docker push rayudu0235/sample-angular-service:latest
+
+  # Step 6: Install Cosign
+      - name: Install Cosign
+        run: |
+          wget https://github.com/sigstore/cosign/releases/download/v1.8.0/cosign-linux-amd64
+          chmod +x cosign-linux-amd64
+          mv cosign-linux-amd64 /usr/local/bin/cosign
+
+  # Step 7: Cosign Sign Docker Image
+      - name: Cosign Sign Docker Image
+        env:
+          COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+        run: |
+          echo "$COSIGN_PASSWORD" | cosign sign --key cosign.key --ref rayudu0235/sample-angular-service:latest 
