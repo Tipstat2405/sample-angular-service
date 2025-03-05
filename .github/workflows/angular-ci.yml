@@ -100,5 +100,5 @@ jobs:
         env:
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
         run: |
-          echo "$COSIGN_PASSWORD" | cosign sign --key cosign.key --ref rayudu0235/sample-angular-service:latest
+          echo "$COSIGN_PASSWORD" | cosign sign rayudu0235/sample-angular-service:latest
 
