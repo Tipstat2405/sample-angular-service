@@ -109,4 +109,4 @@ jobs:
       - name: Cosign Sign Docker Image
         run: |
           cat cosign.key  # Display the key for verification
-          cosign sign --key cosign.key rayudu0235/sample-angular-service:latest
+          cosign sign --key ${{ secrets.COSIGN_PRIVATE_KEY }} rayudu0235/sample-angular-service:latest
