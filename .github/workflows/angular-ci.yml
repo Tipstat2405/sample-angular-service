@@ -102,5 +102,5 @@ jobs:
       # Step 8: Cosign Sign Docker Image
       - name: Cosign Sign Docker Image
         run: |
-          # cat cosign.key  # Display the key for verification
+          cat cosign.key  # Display the key for verification
           cosign sign --key cosign.key rayudu0235/sample-angular-service:latest
