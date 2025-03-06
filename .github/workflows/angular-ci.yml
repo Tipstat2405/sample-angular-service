@@ -107,4 +107,4 @@ jobs:
           cosign sign --key cosign.key rayudu0235/sample-angular-service:latest
       - name: Verify Docker Image Signature
         run: |
-          cosign verify --key cosign.key rayudu0235/sample-angular-service:latest
+          cosign verify --key cosign.pub rayudu0235/sample-angular-service:latest
