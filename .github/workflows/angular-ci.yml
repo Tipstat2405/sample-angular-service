@@ -97,10 +97,10 @@ jobs:
       # Step 7: Generate Cosign Key Pair
       - name: Generate Cosign Key Pair
         run: |
-          cosign generate-key-pair cosign.key
+          cosign generate-key-pair
 
       # Step 8: Cosign Sign Docker Image
       - name: Cosign Sign Docker Image
         run: |
-          cat cosign.key  # Display the key for verification
+          # cat cosign.key  # Display the key for verification
           cosign sign --key cosign.key rayudu0235/sample-angular-service:latest
