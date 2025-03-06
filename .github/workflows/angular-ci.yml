@@ -103,7 +103,8 @@ jobs:
         env:
           COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
         run: |
-          echo "${COSIGN_PRIVATE_KEY}" | cosign generate-key-pair
+          cosign generate-key-pair
+          echo "${{ secrets.COSIGN_PRIVATE_KEY }}" > cosign.key
 
       # Step 8: Cosign Sign Docker Image
       - name: Cosign Sign Docker Image
