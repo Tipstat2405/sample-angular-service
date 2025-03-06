@@ -94,10 +94,16 @@ jobs:
           wget https://github.com/sigstore/cosign/releases/download/v1.8.0/cosign-linux-amd64
           chmod +x cosign-linux-amd64
           mv cosign-linux-amd64 /usr/local/bin/cosign
-      # Step 7: Generate Cosign Key Pair
-      - name: Generate Cosign Key Pair
+      # # Step 7: Generate Cosign Key Pair
+      # - name: Generate Cosign Key Pair
+      #   run: |
+      #     cosign generate-key-pair
+
+      - name: Set up Cosign Credentials
+        env:
+          COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
         run: |
-          cosign generate-key-pair
+          echo "${COSIGN_PRIVATE_KEY}" | cosign generate-key-pair
 
       # Step 8: Cosign Sign Docker Image
       - name: Cosign Sign Docker Image
